@@ -1,0 +1,123 @@
+{% include 'user/user_header.html' %}
+
+
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <center>
+        <div class="title-group mb-3" style="position: relative; text-align: center;">
+            <h1 class="h2 mb-0" style="position: relative; z-index: 2; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; " >Add post</h1>
+            <h1 class="h2 mb-0" style="
+                font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+                font-size: 60px;
+                color: transparent;
+                -webkit-text-stroke: 2px #000;
+                opacity: 0.1;
+                pointer-events: none;
+            ">Add post</h1>
+        </div>
+</center>
+
+    <!-- <form action="" method="post" enctype="multipart/form-data">
+        <input type="file" name="photo" required><br>
+        <input type="text" name="description" placeholder="description" required><br>
+        <input type="submit"name="submit">
+        </form> -->
+
+
+
+        <style>
+            .post-box {
+                width: 400px;
+                margin: 20px auto;
+                padding: 20px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                background: #fff;
+            }
+    
+            .image-preview {
+                width: 100%;
+                height: 300px;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                margin-bottom: 10px;
+            }
+    
+            .image-preview img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+    
+            input[type="file"] {
+                margin-bottom: 10px;
+            }
+    
+            input[type="text"] {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+            }
+    
+            input[type="submit"] {
+                width: 100%;
+                padding: 10px;
+                background: #ff0040;
+                color: #fff;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+    
+            input[type="submit"]:hover {
+                background: #a00433;
+            }
+        </style>
+    
+        <div class="post-box">
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="image-preview" id="imagePreview">
+                    <span>Image Preview</span>
+                </div>
+                <input type="file" name="photo" id="photo" required accept="image/*"><br>
+                <input type="text" name="description" placeholder="Description" required><br>
+                <input type="submit" name="submit" value="Post">
+            </form>
+        </div>
+    
+        <script>
+            const photoInput = document.getElementById('photo');
+            const imagePreview = document.getElementById('imagePreview');
+    
+            photoInput.addEventListener('change', function() {
+                const file = this.files[0];
+    
+                if (file) {
+                    const reader = new FileReader();
+    
+                    reader.onload = function(event) {
+                        imagePreview.innerHTML = '<img src="' + event.target.result + '" alt="Image Preview">';
+                    }
+    
+                    reader.readAsDataURL(file);
+                } else {
+                    imagePreview.innerHTML = '<span>Image Preview</span>';
+                }
+            });
+        </script>
+
+
+
+
+        {% include 'user/footer.html' %}

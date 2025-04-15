@@ -1,0 +1,209 @@
+{% include 'user/user_header.html' %}
+
+
+<style>
+    .card {
+        margin-bottom: 30px;
+    }
+    
+    .overflow-hidden {
+        overflow: hidden!important;
+    }
+    
+    .p-0 {
+        padding: 0!important;
+    }
+    
+    .mt-n5 {
+        margin-top: -3rem!important;
+    }
+    
+    .linear-gradient {
+        background-image: linear-gradient(#50b2fc,#f44c66);
+    }
+    
+    .rounded-circle {
+        border-radius: 50%!important;
+    }
+    
+    .align-items-center {
+        align-items: center!important;
+    }
+    
+    .justify-content-center {
+        justify-content: center!important;
+    }
+    
+    .d-flex {
+        display: flex!important;
+    }
+    
+    .rounded-2 {
+        border-radius: 7px !important;
+    }
+    
+    .bg-light-info {
+        --bs-bg-opacity: 1;
+        background-color: rgba(235,243,254,1)!important;
+    }
+    
+    .card {
+        margin-bottom: 30px;
+    }
+    
+    .position-relative {
+        position: relative!important;
+    }
+    
+    .shadow-none {
+        box-shadow: none!important;
+    }
+    
+    .overflow-hidden {
+        overflow: hidden!important;
+    }
+    
+    .border {
+        border: 1px solid #ebf1f6 !important;
+    }
+    
+    .fs-6 {
+        font-size: 1.25rem!important;
+    }
+    
+    .mb-2 {
+        margin-bottom: 0.5rem!important;
+    }
+    
+    .d-block {
+        display: block!important;
+    }
+    
+    a {
+        text-decoration: none;
+    }
+    
+    .user-profile-tab .nav-item .nav-link.active {
+        color: #5d87ff;
+        border-bottom: 2px solid #5d87ff;
+    }
+    
+    .mb-9 {
+        margin-bottom: 20px!important;
+    }
+    
+    .fw-semibold {
+        font-weight: 600!important;
+    }
+    .fs-4 {
+        font-size: 1rem!important;
+    }
+    
+    .card, .bg-light {
+        box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+    }
+    
+    .fs-2 {
+        font-size: .75rem!important;
+    }
+    
+    .rounded-4 {
+        border-radius: 4px !important;
+    }
+    
+    .ms-7 {
+        margin-left: 30px!important;
+    }
+</style>
+<!-- <style>
+    .cust-profile-photo {
+        height: 4.0rem; 
+        width: 4.0rem;
+        aspect-ratio: 1/2;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+</style>
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <div class="title-group mb-3">
+        <h1 class="h2 mb-0">Feed</h1>
+
+        <small class="text-muted">Latests Updates Here</small>
+    </div>
+
+        {% if data %}
+    
+            {% for i in data %}
+            <tr>
+                <th><img src="/{{ i.photo }}" width="100" height="100" alt="User Photo" class="cust-profile-photo" /></th>
+               <td>{{ i.username }}</td>
+                <td><a href="/user_chat?id={{ i.user_id }}" class="btn btn-primary ">Message</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        
+        {% endif %} -->
+
+
+
+
+        <main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+            <center>
+                <div class="title-group mb-3" style="position: relative; text-align: center;">
+                    <h1 class="h2 mb-0" style="position: relative; z-index: 2; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; " >Messages</h1>
+                    <h1 class="h2 mb-0" style="
+                        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        z-index: 1;
+                        font-size: 60px;
+                        color: transparent;
+                        -webkit-text-stroke: 2px #000;
+                        opacity: 0.1;
+                        pointer-events: none;
+                    ">Messages</h1>
+                </div>
+        </center>
+
+            {% if data %}
+            <div class="row">
+                {% for i in data %}
+                    <div class="col-sm-6 col-lg-20 mb-4">
+                        <div class="card hover-img">
+                            <div class="card-body p-4 text-center border-bottom">
+                                <img src="/{{ i.photo }}" alt="" class="custom-block-profile-image img-fluid" >
+                                <h5 class="fw-semibold mb-0">{{ i.f_name }}</h5>
+                                <span class="text-dark fs-2">{{ i.username }}</span>
+                            </div>
+                            <ul class="px-2 py-2 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
+                                <li class="position-relative">
+                                    <a class="text-primary d-flex align-items-center justify-content-center p-2 fs-5 rounded-circle fw-semibold" href="javascript:void(0)">
+                                        <i class="ti ti-brand-facebook"></i>
+                                    </a>
+                                </li>
+                                <li class="position-relative">
+                                    <a class="text-danger d-flex align-items-center justify-content-center p-2 fs-5 rounded-circle fw-semibold" href="javascript:void(0)">
+                                        <i class="ti ti-brand-instagram"></i>
+                                    </a>
+                                </li>
+                                <li class="position-relative">
+                                    <a class="text-info d-flex align-items-center justify-content-center p-2 fs-5 rounded-circle fw-semibold" href="javascript:void(0)">
+                                        <i class="ti ti-brand-github"></i>
+                                    </a>
+                                </li>
+                                <li class="position-relative" style="background-color: rgb(211, 45, 45); border-radius:40px; margin-right:40px;" >
+                                    <a style="height:30px;" class="text-secondary d-flex align-items-center justify-content-center p-2 fs-5 rounded-circle fw-semibold" href="/user_chat?id={{ i.user_id }}">
+                                      <h6 style="color: #ebebeb; padding-top:5px; font-size:medium;" >Message</h6>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+
+        {% include 'user/footer.html' %}

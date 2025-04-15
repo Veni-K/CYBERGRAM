@@ -1,0 +1,100 @@
+{% include 'user/user_headers.html' %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+{% for i in data %}
+<center>
+
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <div class="title-group mb-3">
+        <h1 class="h2 mb-0">Overview</h1>
+
+        <small class="text-muted">Hello {{i.f_name}} , Welcome back!</small>
+    </div>
+
+
+
+    
+
+        <div class="col-lg-10 col-12">
+            <div class="custom-block custom-block-profile-front custom-block-profile text-center bg-white">
+                <div class="custom-block-profile-image-wrap mb-4">
+                    <img src="{{i.photo}}" class="custom-block-profile-image img-fluid" alt="">
+
+                    <a href="update_profile" class="bi-pencil-square custom-block-edit-icon"></a>
+                </div>
+
+                <p class="d-flex flex-wrap mb-2">
+                    <strong>Name:</strong>
+
+                    <span>{{i.f_name}}</span>
+                </p>
+
+                <p class="d-flex flex-wrap mb-2">
+                    <strong>Email:</strong>
+                    
+                    <a href="#">
+                        {{i.email}}
+                    </a>
+                </p>
+
+                <p class="d-flex flex-wrap mb-0">
+                    <strong>Phone:</strong>
+
+                    <a href="#">
+                        {{i.phone}}
+                    </a>
+                </p>
+
+
+<br>
+                        <h4 class="mb-3">Login Activity</h4>
+                        <canvas id="activityChart"></canvas>
+                        
+                  
+            </div>
+        </center>
+            
+            
+
+            {% endfor %}
+
+            <script>
+                const ctx = document.getElementById('activityChart').getContext('2d');
+                const activityChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Activity 1', 'Activity 2', 'Activity 3', 'Activity 4'],
+                        datasets: [{
+                            label: 'Usage Percentage',
+                            data: [75, 50, 90, 60], // Example percentage data
+                            backgroundColor: [
+                                'rgba(54, 162, 235, 0.7)',
+                                'rgba(75, 192, 192, 0.7)',
+                                'rgba(255, 159, 64, 0.7)',
+                                'rgba(153, 102, 255, 0.7)'
+                            ],
+                            borderColor: [
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(255, 159, 64, 1)',
+                                'rgba(153, 102, 255, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100
+                            }
+                        }
+                    }
+                });
+            </script>
+            
+
+
+{% include 'user/footer.html' %}

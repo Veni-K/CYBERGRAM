@@ -1,0 +1,169 @@
+{% include 'user/user_header.html' %}
+
+<style>
+    .people-nearby {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .nearby-user {
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .nearby-user:hover {
+        transform: translateY(-3px);
+    }
+
+    .profile-photo-lg {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    .profile-link {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .profile-link:hover {
+        text-decoration: underline;
+    }
+
+    .text-muted {
+        color: #6c757d !important;
+        font-size: 14px;
+    }
+
+    .mb-0 {
+        margin-bottom: 0 !important;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        padding: 8px 12px;
+        border-radius: 4px;
+        color: #fff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+   .small-text {
+        font-size: 12px; /* Adjust the size to make the text smaller */
+    }
+    span{
+        text-align: right;
+        
+    }
+    
+</style>
+
+
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <center>
+        <div class="title-group mb-3" style="position: relative; text-align: center;">
+            <h1 class="h2 mb-0" style="position: relative; z-index: 2; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; " >Add Friends</h1>
+            <h1 class="h2 mb-0" style="
+                font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+                font-size: 60px;
+                color: transparent;
+                -webkit-text-stroke: 2px #000;
+                opacity: 0.1;
+                pointer-events: none;
+            ">Add Friends</h1>
+        </div>
+</center>
+
+<!-- 
+<table border="1">
+    <tr>
+        <th>user first name</th>
+        <th>last name</th>
+        <th>username</th>
+        <th>DOB</th>
+        <th>gender</th>
+        <th>place</th>
+        <th>photo</th>
+        <th>phone</th>
+        <th>email</th>
+        <th>user_type</th>
+        <th>status</th>
+        <th>bulliying count</th>
+        <th>Action</th>
+    </tr>
+    {% for i in data %}
+
+    <tr>
+        <td> {{i.f_name}} </td>
+        <td> {{i.l_name}} </td>
+        <td> {{i.username}} </td>
+        <td> {{i.dob}} </td>
+        <td> {{i.gender}} </td>
+        <td> {{i.place}} </td>
+        <td><img src="/{{i.photo}}" width="100px" height="100px"/></td>
+        <td> {{i.phone}} </td>
+        <td> {{i.email}} </td>
+        <td> {{i.user_type}}</td>
+        <td> {{i.status}} </td>
+        <td> {{i.bullying_count}} </td>
+        <td><a href="/user_add_friend_request?id={{i.user_id}}">Add friend</a></td>
+    </tr>
+    {% endfor %}
+</table>
+ -->
+
+ <div class="container">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <div class="people-nearby">
+                {% if data %}
+                    {% for i in data %}
+                    <div class="nearby-user mb-4 p-3 bg-white rounded shadow-sm">
+                        <div class="row align-items-center">
+                            <div class="col-md-2 col-sm-3 text-center">
+                                <img src="/{{ i.photo }}" alt="Profile photo of {{ i.username }}" class="profile-photo-lg rounded-circle">
+                            </div>
+                            <div class="col-md-8 col-sm-6">
+                                <h5 class="mb-1"><a href="#" class="profile-link">{{ i.f_name }} </a></h5>
+                                <p class="text-muted small-text mb-0"><strong>Username:</strong> {{ i.username }}</p>
+                                <p class="text-muted small-text mb-0"><strong>DOB:</strong> {{ i.dob }}</p>
+                                <p class="text-muted small-text mb-0"><strong>Gender:</strong> {{ i.gender }}</p>
+                                <p class="text-muted small-text mb-0"><strong>Place:</strong> {{ i.place }}</p>
+                                <span>
+                                <p class="text-muted small-text mb-0"><strong>Phone:</strong> {{ i.phone }}</p>
+                                <p class="text-muted small-text mb-0"><strong>Email:</strong> {{ i.email }}</p>
+                                <p class="text-muted small-text mb-0"><strong>Status:</strong> {{ i.status }}</p>
+                                <p class="text-muted small-text mb-0"><strong>Bullying Count:</strong> {{ i.bullying_count }}</p>
+                            </span>
+                            </div>
+                            <div class="col-md-2 col-sm-3 text-end">
+                                <a href="/user_add_friend_request?id={{ i.user_id }}" style="width: 200px;" class="btn btn-danger">Add Friend</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="text-center text-muted">No users available to add as friends</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% include 'user/footer.html' %}

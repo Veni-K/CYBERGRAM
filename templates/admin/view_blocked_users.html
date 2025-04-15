@@ -1,0 +1,75 @@
+<br>
+{% include 'admin/admin_header.html' %}
+
+<br><br>
+<center>
+<h1 >View Blocked <span style="color: rgb(146, 0, 75);" > Users </span> </h1>
+</center>   
+<hr>
+<hr>
+
+<br>
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        border: 2px solid red; /* Red border for table cells */
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2; /* Light gray background for headers */
+    }
+    tr:nth-child(even) {
+        background-color: #f9f9f9; /* Alternate row colors */
+    }
+</style>
+
+{% if data %}
+
+<table border="1">
+    <tr>
+        <th>user first name</th>
+        <th>last name</th>
+        <th>username</th>
+        <th>DOB</th>
+        <th>gender</th>
+        <th>place</th>
+        <th>photo</th>
+        <th>phone</th>
+        <th>email</th>
+        <th>status</th>
+        <th>bulliying count</th>
+    </tr>
+    {% for i in data %}
+
+    <tr>
+        <td> {{i.f_name}} </td>
+        <td> {{i.l_name}} </td>
+        <td> {{i.username}} </td>
+        <td> {{i.dob}} </td>
+        <td> {{i.gender}} </td>
+        <td> {{i.place}} </td>
+        <td><img src="/{{i.photo}}" width="100px" height="100px"/></td>
+        <td> {{i.phone}} </td>
+        <td> {{i.email}} </td>
+        <td> {{i.status}} </td>
+        <td> {{i.bullying_count}} </td>
+
+    </tr>
+
+    {% endfor %}
+    {% else %}
+    <center>
+    <h5>No Blocked Users Exists!!!!</h5>
+</center>
+    {% endif %}
+
+</table>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,59 @@
+{% include 'user/user_header.html' %}
+
+
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <center>
+        <div class="title-group mb-3" style="position: relative; text-align: center;">
+            <h1 class="h2 mb-0" style="position: relative; z-index: 2; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; " >Friends</h1>
+            <h1 class="h2 mb-0" style="
+                font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+                font-size: 60px;
+                color: transparent;
+                -webkit-text-stroke: 2px #000;
+                opacity: 0.1;
+                pointer-events: none;
+            ">Friends</h1>
+        </div>
+</center>
+
+    <div style="margin-top: 25px;">
+        {% if data %}
+        <table style="width: 100%; font-family:monospace; border-collapse: collapse; border: 1px solid #ddd;">
+            <tr>
+                <th style="border: 1px solid #ddd; padding: 8px;">Photo</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Username</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Phone Number</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Email</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Gender</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">DOB</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">View Post of Friends</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">
+                    <img src="/{{ i.photo }}" width="100" height="100" alt="User Photo" class="cust-profile-photo" style="border-radius: 50%; border: 2px solid #ddd;" />
+                </td>
+                <td style="border: 1px solid #ddd; padding: 8px;">{{ i.username }}</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">{{ i.phone }}</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">{{ i.email }}</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">{{ i.gender }}</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">{{ i.dob }}</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">
+                    <a href="/view_specific_friend_post?id={{ i.user_id }}" class="btn btn-danger">View Post</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>You have no friends</p>
+        {% endif %}
+    </div>
+
+
+    {% include 'user/footer.html' %}
+    

@@ -1,0 +1,42 @@
+<br>
+{% include 'admin/admin_header.html' %}
+
+<br><br>
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0;  font-size: 14px;">
+    {% if data %}
+    <thead>
+        <tr style="background-color: #f2f2f2;">
+            <th style="padding: 10px; border-bottom: 2px solid #ddd; text-align: left;">SL NO</th>
+            <th style="padding: 10px; border-bottom: 2px solid #ddd; text-align: left;">Date</th>
+            <th style="padding: 10px; border-bottom: 2px solid #ddd; text-align: left; width: 40%;">Complaint</th>
+            <th style="padding: 10px; border-bottom: 2px solid #ddd; text-align: left; width: 40%;">Reply</th>
+            <th style="padding: 10px; border-bottom: 2px solid #ddd; text-align: left;">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in data %}
+        <tr style="background-color: #fff; border-bottom: 1px solid #ddd;">
+            <td style="padding: 10px;">{{ loop.index }}</td>
+            <td style="padding: 10px;">{{ i.date }}</td>
+            <td style="padding: 10px; width: 40%;">{{ i.complaint }}</td>
+            <td style="padding: 10px; width: 40%;">{{ i.reply }}</td>
+            <td style="padding: 10px;">
+                <form action="" method="post" style="display: flex; gap: 10px; align-items: center;">
+                    <input type="hidden" name="complaint_id" value="{{ i.complaint_id }}">
+                    <input type="text" name="reply" placeholder="Submit your reply here" style="flex: 1; padding: 8px; border: 1px solid #ddd; border-radius: 4px; font-size: 14px;">
+                    <input type="submit" name="submit" class="btn btn-primary" value="Submit reply" style="background-color: #007bff; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer;">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    {% else %}
+    <tr>
+        <td colspan="5" style="padding: 20px; text-align: center; font-size: 18px; color: #777;">You have not posted any complaints</td>
+    </tr>
+    {% endif %}
+</table>
+</div>
+</div>
+</div>
+</body></html>

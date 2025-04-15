@@ -1,0 +1,229 @@
+{% include 'user/user_header.html' %}
+
+<!-- <h1>View Profile</h1>
+
+<table border="1">
+    <tr>
+        <th>user first name</th>
+        <th>last name</th>
+        <th>username</th>
+        <th>DOB</th>
+        <th>gender</th>
+        <th>place</th>
+        <th>photo</th>
+        <th>phone</th>
+        <th>email</th>
+        <th>user_type</th>
+        <th>status</th>
+        <th>bulliying count</th>
+        <th>Action</th>
+    </tr>
+    {% for i in data %}
+    
+    <tr>
+        <td> {{i.f_name}} </td>
+        <td> {{i.l_name}} </td>
+        <td> {{i.username}} </td>
+        <td> {{i.dob}} </td>
+        <td> {{i.gender}} </td>
+        <td> {{i.place}} </td>
+        <td><img src="/{{i.photo}}" width="100px" height="100px"/></td>
+        <td> {{i.phone}} </td>
+        <td> {{i.email}} </td>
+        <td> {{i.user_type}}</td>
+        <td> {{i.status}} </td>
+        <td> {{i.bullying_count}} </td>
+        <td> <a href="/update_profile?id={{i.user_id}}">update_profile</a> <br> <br>   
+    </tr>
+    {% endfor %}
+</table> -->
+
+
+
+
+
+
+
+
+
+
+
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <center>
+        <div class="title-group mb-3" style="position: relative; text-align: center;">
+            <h1 class="h2 mb-0" style="position: relative; z-index: 2; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; " >Profile</h1>
+            <h1 class="h2 mb-0" style="
+                font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+                font-size: 60px;
+                color: transparent;
+                -webkit-text-stroke: 2px #000;
+                opacity: 0.1;
+                pointer-events: none;
+            ">Profile</h1>
+        </div>
+</center>
+
+    {% for i in data %}
+
+    <div class="row my-4">
+        <div class="col-lg-7 col-12">
+            <div class="custom-block custom-block-profile">
+                <div class="row">
+                    <div class="col-lg-12 col-12 mb-3">
+                        <h6>General</h6>
+                    </div>
+
+                    <div class="col-lg-3 col-12 mb-4 mb-lg-0">
+                        <div class="custom-block-profile-image-wrap">
+                            <img src="/{{i.photo}}" class="custom-block-profile-image img-fluid" alt="">
+
+                            <a href="/update_profile?id={{i.user_id}}" class="bi-pencil-square custom-block-edit-icon"></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-9 col-12">
+                        
+                        <p class="d-flex flex-wrap mb-2">
+                            <strong>Name:</strong>
+
+                            <span>{{i.f_name}} {{i.l_name}} </span>
+                        </p>
+
+                        <p class="d-flex flex-wrap mb-2">
+                            <strong>Email:</strong>
+                            
+                            <a href="#">
+                                {{i.email}}
+                            </a>
+                        </p>
+
+                        <p class="d-flex flex-wrap mb-2">
+                            <strong>Phone:</strong>
+
+                            <a href="#">
+                                {{i.phone}}
+                            </a>
+                        </p>
+
+                        <p class="d-flex flex-wrap mb-2">
+                            <strong>Birthday:</strong>
+
+                            <span>{{i.dob}} </span>
+                        </p>
+
+                        <p class="d-flex flex-wrap mb-2">
+                            <strong>Gender:</strong>
+
+                            <span>{{i.gender}} </span>
+                        </p>
+
+                        <p class="d-flex flex-wrap">
+                            <strong>Address:</strong>
+
+                            <span>{{i.place}}</span>
+                        </p>
+
+                        <p class="d-flex flex-wrap">
+                            <strong>User Type:</strong>
+
+                            <span>{{i.user_type}}</span>
+                        </p>
+
+                        <p class="d-flex flex-wrap">
+                            <strong>Status:</strong>
+
+                            <span>{{i.status}}</span>
+                        </p>
+
+                        <p class="d-flex flex-wrap">
+                            <strong>Bullying Nos</strong>
+
+                            <span>{{i.bullying_count}}</span>
+                        </p>
+                        
+                    </div>
+                    <a href="/update_profile?id={{i.user_id}}" class="btn custom-btn custom-btn-bg-white mt-3" style="background-color: rgb(255, 46, 46); color: white;">
+                        Update Profile
+                    </a>
+
+                    <a id="deactivateBtn" href="#" class="btn custom-btn custom-btn-bg-white mt-3" 
+   style="background-color: rgb(255, 46, 46); color: white;" 
+   onclick="startCountdown({{i.login_id}}); return false;">
+   Deactivate Account
+</a>
+
+<script>
+function startCountdown(loginId) {
+    let countdown = 5;
+    const deactivateBtn = document.getElementById("deactivateBtn");
+    deactivateBtn.textContent = `Deactivate Account (${countdown})`;
+
+    const timer = setInterval(() => {
+        countdown--;
+        deactivateBtn.textContent = `Deactivate Account (${countdown})`;
+
+        if (countdown <= 0) {
+            clearInterval(timer);
+            if (confirm('Are you sure you want to deactivate your Account?')) {
+                window.location.href = `/deactivate?id=${loginId}`;
+            } else {
+                deactivateBtn.textContent = "Deactivate Account";
+            }
+        }
+    }, 1000);
+}
+</script>
+
+                </div>
+                
+            </div>
+            
+
+            <div class="custom-block custom-block-profile bg-white">
+                <h6 class="mb-4">Information</h6>
+
+                <p class="d-flex flex-wrap mb-2">
+                    <strong>Bullying Count</strong>
+
+                    <span>{{i.bullying_count}}</span>
+                </p>
+
+                <p class="d-flex flex-wrap mb-2">
+                    <strong>Status</strong>
+
+                    <span>{{i.status}}</span>
+                </p>
+
+                <p class="d-flex flex-wrap mb-2">
+                    <strong>User Type</strong>
+
+                    <span>{{i.user_type}}</span>
+                </p>
+
+            </div>
+        </div>
+
+        <div class="col-lg-5 col-12">
+            <div class="custom-block custom-block-contact">
+                <h6 class="mb-4">Are there any bugs you're experiencing with us?</h6>
+
+                <p>
+                    <strong>Write a complaint to us:</strong>
+                    
+                </p>
+
+                <a href="/complaint" class="btn custom-btn custom-btn-bg-white mt-3">
+                    Complaint Form
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+
+    {% include 'user/footer.html' %}

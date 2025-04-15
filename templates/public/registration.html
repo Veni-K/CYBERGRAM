@@ -1,0 +1,202 @@
+
+
+<!-- <form method="post" enctype="multipart/form-data">
+    <input type="text" name="fname" placeholder="first name" required><br>
+    <input type="text" name="lname" placeholder="last name" required><br>
+    <input type="date" name="dob" placeholder="dob" required><br>
+    <input type="text" name="gender" placeholder="gender" required><br>
+    <input type="text" name="place" placeholder="place" required><br>
+    <input type="file" name="photos" placeholder="photo" required><br>
+    <input type="number" name="phone" placeholder="phone" required><br>
+    <input type="email" name="email" placeholder="email" required><br>
+    <input type="text" name="username" placeholder="username" required><br>
+    <input type="password" name="password" placeholder="password" required><br>
+    <input type="submit" name="submit">
+</form>
+ -->
+
+
+
+
+
+
+
+
+
+ 
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Cybergram Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/assets/css/style.css">
+
+    <style>
+        .wel{
+            padding-bottom: 700px;
+        }
+      .ftco-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        background: #f7f7f7;
+      }
+      .wrap {
+        width: 100%;
+        max-width: 900px;
+        background: #fff;
+        box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .text-wrap {
+        background: #f03d4f;
+        color: #fff;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-12 col-lg-10">
+            <div class="wrap d-md-flex">
+              <div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
+                <div class="wel">
+                <div class="text w-100">
+                  <h2>Welcome to Cybergram</h2>
+                  <p>Already Have an account?</p>
+                  <a href="/login" class="btn btn-white btn-outline-white">Sign Up</a>
+                  <p style="padding-top:50px;" >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis distinctio voluptatibus deserunt doloribus omnis facilis nesciunt explicabo dolorum repellendus? Nulla veniam asperiores eos fugit ad cupiditate. Vero harum amet accusantium. lor </p>
+                </div>
+            </div>
+              </div>
+              <div class="login-wrap p-4 p-lg-5">
+                <div class="d-flex">
+                  <div class="w-100">
+                    <h3 class="mb-4">Register</h3>
+                  </div>
+                  <div class="w-100">
+                    <p class="social-media d-flex justify-content-end">
+                      <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
+                      <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
+                    </p>
+                  </div>
+                </div>
+
+
+                <form method="post" class="signin-form" enctype="multipart/form-data" onsubmit="return validateForm()">
+                  <div class="form-group mb-3">
+                    <label class="label" for="name">First Name</label>
+                    <input type="text" class="form-control" name="fname" placeholder="First Name" required>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="label" for="name">Last Name</label>
+                    <input type="text" class="form-control" name="lname" placeholder="Last Name" required>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="label" for="name">Date of Birth</label>
+                    <input type="date" class="form-control" name="dob" placeholder="Date of Birth" required>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="label" for="gender">Gender</label>
+                    <select class="form-control" name="gender" required>
+                      <option value="" disabled selected>Select your gender</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  
+                  <div class="form-group mb-3">
+                    <label class="label" for="name">Place</label>
+                    <input type="text" class="form-control" name="place" placeholder="Place" required>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="label" for="name">Photo</label>
+                    <input type="file" class="form-control" name="photos" placeholder="Photo" required>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="label" for="name">Phone</label>
+                    <input type="number" class="form-control" name="phone" placeholder="Phone" required>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="label" for="name">Email</label>
+                    <input type="email" class="form-control" name="email" placeholder="Email" required>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="label" for="name">Username</label>
+                    <input type="text" class="form-control" name="username" placeholder="Username" required>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label class="label" for="password">Password</label>
+                    <input type="password" name="password" class="form-control" placeholder="Password" required>
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" name="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+                  </div>
+                  <div class="form-group d-md-flex">
+                    <div class="w-50 text-left">
+                      <label class="checkbox-wrap checkbox-primary mb-0">Remember Me
+                        <input type="checkbox" checked>
+                        <span class="checkmark"></span>
+                      </label>
+                    </div>
+                  </div>
+                </form>
+                
+               
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <script>
+      function validateForm() {
+        const email = document.querySelector('input[name="email"]').value;
+        const dob = document.querySelector('input[name="dob"]').value;
+        const phone = document.querySelector('input[name="phone"]').value;
+    
+
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9.-]+)\.com$/;
+        if (!emailPattern.test(email)) {
+          alert("Please enter a valid email ending with '.com' and avoid using special characters.");
+          return false;
+        }
+
+        const dobDate = new Date(dob);
+        const maxDate = new Date('2017-12-31');
+        if (dobDate > maxDate) {
+          alert("Date of Birth should not be later than 2017.");
+          return false;
+        }
+    
+        const phonePattern = /^[0-9]{10}$/;
+        if (!phonePattern.test(phone)) {
+          alert("Please enter a valid 10-digit phone number.");
+          return false;
+        }
+    
+        return true; // If all validations pass
+      }
+    </script>
+
+    <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/popper.js"></script>
+    <script src="/static/assets/js/bootstrap.min.js"></script>
+    <script src="/static/assets/js/main.js"></script>
+  </body>
+</html>
+
+

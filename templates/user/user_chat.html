@@ -1,0 +1,325 @@
+{% include 'user/user_header.html' %}
+<!-- 
+<script>
+    
+    window.onload = function() {
+        var chatMessages = document.getElementById('chatMessages');
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    };
+</script>
+
+<style type="text/css">
+ 
+    .chat-container {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: 0 auto;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .chat-header {
+        background-color: #306ac1;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        font-size: 18px;
+    }
+
+    .chat-messages {
+        padding: 10px;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+
+    .message {
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 10px;
+        clear: both;
+        word-wrap: break-word;
+    }
+
+    .message.sender {
+        background-color: #2360b636;
+        float: right;
+        max-width: 75%;
+    }
+
+    .message.receiver {
+        background-color: #98919175;
+        float: left;
+        max-width: 75%;
+    }
+
+    .message-content {
+        padding: 5px;
+    }
+
+    .message-timestamp {
+        font-size: 12px;
+        color: #888;
+        text-align: right;
+    }
+
+    .message-input {
+        border-top: 1px solid #ddd;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+    }
+
+    .message-input input {
+        flex: 1;
+        padding: 8px;
+        border: none;
+        border-radius: 20px;
+        margin-right: 10px;
+    }
+
+    .message-input button {
+        background-color: #075e54;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        width: 100px;
+        height: 40px;
+        cursor: pointer;
+    }
+</style>
+
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <center>
+        <div class="title-group mb-3" style="position: relative; text-align: center;">
+            <h1 class="h2 mb-0" style="position: relative; z-index: 2; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; " >Chat</h1>
+            <h1 class="h2 mb-0" style="
+                font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+                font-size: 60px;
+                color: transparent;
+                -webkit-text-stroke: 2px #000;
+                opacity: 0.1;
+                pointer-events: none;
+            ">Chat</h1>
+        </div>
+</center>
+
+
+<br><br>
+<div class="container" style="min-height: 90vh;">
+    <div class="chat-container">
+        <div style="min-height: 60vh;">
+            {% if data %}
+                <div class="chat-header">Chat with {{ data[0]['username'] }} {{ data[0][''] }}</div>
+                    <div class="chat-messages" id="chatMessages">
+                        {% if data1 %}
+                            {% for i in data1 %}
+                                {% if i.from_id == session['user_id'] %}
+                                    
+                                    <div class="message sender">
+                                        <div class="message-content">{{ i.message }}</div>
+                                    </div>
+                                {% else %}
+                                    
+                                    <div class="message receiver">
+                                        <div class="message-content">{{ i.message }}</div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <form method="post">
+                    <div class="message-input">
+                        <input type="text" name="message" placeholder="Type a message..." required>
+                        <button type="submit" name="submit">Send</button>
+                    </div>
+                </form>
+            {% endif %}
+    </div>
+</div> -->
+
+
+
+
+
+
+
+<style>
+    .chat-container {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: 0 auto;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .chat-header {
+        background-color: #2f7c72;
+        color: #fff;
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    
+    .chat-header .user-status {
+        font-size: 12px;
+        margin-left: 10px;
+        color: #d2d2d2;
+    }
+    
+    .chat-messages {
+        padding: 15px;
+        max-height: 400px;
+        overflow-y: auto;
+        background-color: #e5ddd5;
+    }
+    
+    .message {
+        padding: 10px 15px;
+        margin: 5px 0;
+        border-radius: 15px;
+        clear: both;
+        word-wrap: break-word;
+        position: relative;
+    }
+    
+    .message.sender {
+        background-color: #DCF8C6;
+        align-self: flex-end;
+        float: right;
+        max-width: 70%;
+    }
+    
+    .message.receiver {
+        background-color: #fff;
+        float: left;
+        max-width: 70%;
+    }
+    
+    .message-content {
+        padding: 5px 0;
+    }
+    
+    .message-timestamp {
+        font-size: 10px;
+        color: #888;
+        text-align: right;
+        margin-top: 5px;
+    }
+    
+    .message-input {
+        border-top: 1px solid #ddd;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        background-color: #f0f0f0;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    
+    .message-input input {
+        flex: 1;
+        padding: 10px 15px;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        margin-right: 10px;
+        background-color: #fff;
+        box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+    }
+    
+    .message-input button {
+        background-color: #3d3d3d;
+        color: #fff;
+        border: none;
+        border-radius: 20px;
+        width: 80px;
+        height: 40px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .message-input button:hover {
+        background-color: #1d1d1d;
+    }
+    
+</style>
+
+
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <center>
+        <div class="title-group mb-3" style="position: relative; text-align: center;">
+            <h1 class="h2 mb-0" style="position: relative; z-index: 2; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; " >Chat</h1>
+            <h1 class="h2 mb-0" style="
+                font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+                font-size: 60px;
+                color: transparent;
+                -webkit-text-stroke: 2px #000;
+                opacity: 0.1;
+                pointer-events: none;
+            ">Chat</h1>
+        </div>
+</center>
+
+    <div class="container" style="min-height: 90vh;">
+        <div class="chat-container">
+            {% if data %}
+                <div class="chat-header">
+                    <span>Chat with {{ data[0]['f_name'] }}</span>
+                    <span class="user-status">      </span>
+                </div>
+                <div class="chat-messages" id="chatMessages">
+                    {% if data1 %}
+                        {% for i in data1 %}
+                            {% if i.from_id == session['user_id'] %}
+                                <!-- Message sent by the logged-in user (sender) -->
+                                <div class="message sender">
+                                    <div class="message-content">{{ i.message }}</div>
+                                    <div class="message-timestamp">{{ i.timestamp }}</div>
+                                </div>
+                            {% else %}
+                                <!-- Message received by the logged-in user (receiver) -->
+                                <div class="message receiver">
+                                    <div class="message-content">{{ i.message }}</div>
+                                    <div class="message-timestamp">{{ i.timestamp }}</div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <form method="post">
+                    <div class="message-input">
+                        <input type="text" name="message" placeholder="Type a message..." required>
+                        <button type="submit" name="submit">
+                            <span>Send</span>
+                        </button>
+                    </div>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+</main>
+
+
+
+{% include 'user/footer.html' %}

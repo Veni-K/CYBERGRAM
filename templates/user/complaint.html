@@ -1,0 +1,317 @@
+<!-- 
+
+
+
+<style>
+    body {
+        background-color: #eaf4ff; 
+        
+        
+    }
+
+    .my_div {
+        font-family: Arial, sans-serif; 
+        max-width: 1200px; 
+        width: 100%; 
+        background-color: #ffffff;
+        margin: 60px auto; 
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+        overflow-x: auto; 
+        margin-bottom: 100px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left; 
+    }
+
+    th, td {
+        padding: 12px; 
+        border-bottom: 1px solid #ddd; 
+        word-wrap: break-word;
+    }
+
+    th {
+        background-color: #007bff; 
+        color: #ffffff; 
+        font-weight: bold; 
+    }
+
+    tr:hover {
+        background-color: #f1f9ff; 
+    }
+
+    img {
+        border-radius: 5px; 
+        max-width: 100%;
+        height: auto; 
+    }
+
+    
+    .cust-profile-photo {
+    width: 4.7rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    overflow: hidden;
+}
+</style>
+
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <center>
+        <div class="title-group mb-3" style="position: relative; text-align: center;">
+            <h1 class="h2 mb-0" style="position: relative; z-index: 2; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; " >Send Complaint</h1>
+            <h1 class="h2 mb-0" style="
+                font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1;
+                font-size: 60px;
+                color: transparent;
+                -webkit-text-stroke: 2px #000;
+                opacity: 0.1;
+                pointer-events: none;
+            ">Send Complaint</h1>
+        </div>
+</center>
+
+
+<div class="container my_div">
+
+
+
+
+    
+    <div class="cust-div mt-5 " >
+        <form action="" method="post" >
+            <textarea name="complaint" id="" cols="80" rows="20" placeholder="Submit your complaints here"></textarea>
+
+            <input type="submit" name="submit" class="btn btn-primary" value="Submit complaint">
+        </form>
+    </div>
+    
+    
+</div>
+
+
+<div>
+<table>
+    {% if data %}
+    <tr>
+        
+        <th>SL NO</th>
+        <th>date</th>
+        <th>complaint</th>
+        <th>reply</th>
+        <th>status</th>
+    </tr>
+    {% for i in data %}
+    <tr>
+        <td>{{loop.index}}</td>
+        <td>{{i.date}}</td>
+        <td style="width:40% ;">{{i.complaint}}</td>
+        <td style="width:40% ;">{{i.reply}}</td>
+        <td style="width:40% ;">{{i.status}}</td>
+    </tr>
+    {% endfor %}
+    {% else %}
+    <tr><h1 >You have not posted any complaints</h1></tr>
+    {% endif %}
+</table>
+</div>
+</div>
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+{% include 'user/user_header.html' %}
+
+<style>
+   
+
+    .my_div {
+        max-width: 1200px;
+        width: 100%;
+        background-color: #ffffff;
+        margin: 60px auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* Slightly deeper shadow */
+        overflow-x: auto;
+        margin-bottom: 60px;
+    }
+
+    .title-group {
+        position: relative;
+        text-align: center;
+    }
+
+    .title-group h1 {
+        font-family: 'Trebuchet MS', Arial, sans-serif;
+    }
+
+    .title-group h1:first-of-type {
+        z-index: 2;
+    }
+
+    .title-group h1:last-of-type {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        font-size: 60px;
+        color: transparent;
+        -webkit-text-stroke: 2px #000;
+        opacity: 0.05; /* Softer watermark */
+        pointer-events: none;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+    }
+
+    th, td {
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        word-wrap: break-word;
+    }
+
+    th {
+        background-color: #801b1b;
+        color: #ffffff;
+        font-weight: bold;
+        text-transform: uppercase; /* Make headers uppercase for a modern look */
+    }
+
+    tr:hover {
+        background-color: #f0f8ff; /* Subtle hover effect */
+    }
+
+    img {
+        border-radius: 5px;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .cust-profile-photo {
+        width: 4.7rem;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .cust-div form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    textarea {
+        width: 100%;
+        padding: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        resize: vertical;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="submit"] {
+        align-self: flex-start;
+        padding: 10px 20px;
+        background-color: #801b1b;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+    }
+
+    input[type="submit"]:hover {
+        background-color: #461616;
+    }
+
+    .no-complaints {
+        text-align: center;
+        padding: 20px;
+        font-size: 18px;
+        color: #666;
+    }
+
+    @media (max-width: 768px) {
+        .my_div {
+            padding: 15px;
+        }
+
+        th, td {
+            padding: 10px;
+        }
+
+        .title-group h1:last-of-type {
+            font-size: 40px;
+        }
+    }
+</style>
+
+<main class="main-wrapper col-md-9 ms-sm-auto py-4 col-lg-9 px-md-4 border-start">
+    <center>
+        <div class="title-group mb-3">
+            <h1 class="h2 mb-0">Send Complaint</h1>
+            <h1 class="h2 mb-0">Send Complaint</h1>
+        </div>
+    </center>
+
+    <div class="container my_div">
+        <div class="cust-div mt-5">
+            <form action="" method="post">
+                <textarea name="complaint" id="" cols="80" rows="6" placeholder="Submit your complaints here"></textarea>
+                <input type="submit" name="submit" class="btn btn-primary" value="Submit Complaint">
+            </form>
+        </div>
+    </div>
+
+    <div class="container my_div">
+        <table>
+            {% if data %}
+            <tr>
+                <th>SL NO</th>
+                <th>Date</th>
+                <th>Complaint</th>
+                <th>Reply</th>
+                <th>Status</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ i.date }}</td>
+                <td>{{ i.complaint }}</td>
+                <td>{{ i.reply }}</td>
+                <td>{{ i.status }}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="5" class="no-complaints">You have not posted any complaints</td>
+            </tr>
+            {% endif %}
+        </table>
+    </div>
+
+{% include 'user/footer.html' %}
